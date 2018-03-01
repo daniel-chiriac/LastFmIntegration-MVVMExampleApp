@@ -17,6 +17,7 @@ import okhttp3.HttpUrl;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -42,6 +43,9 @@ public class LastFmApiModule {
     OkHttpClient httpClient(Interceptor interceptor, Cache cache) {
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
         httpClient.addInterceptor(interceptor);
+        HttpLoggingInterceptor httpLogger = new HttpLoggingInterceptor();
+        httpLogger.setLevel(HttpLoggingInterceptor.Level.BODY);
+        httpClient.addInterceptor(httpLogger);
         httpClient.cache(cache);
         return httpClient.build();
     }
