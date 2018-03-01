@@ -11,7 +11,7 @@ import retrofit2.http.Query;
 
 public interface LastFmService {
 
-    @GET("/2.0/?method=artist.search&format=json")
+    @GET("/2.0/?method=artist.search")
     Single<ArtistResult> searchByArtist(@Query("artist") String artist);
     @GET("/2.0/?method=album.search")
     Single<AlbumResult> searchByAlbum(@Query("album") String album);

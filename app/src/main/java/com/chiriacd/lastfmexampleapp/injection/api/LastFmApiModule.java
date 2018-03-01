@@ -77,6 +77,7 @@ public class LastFmApiModule {
 
             HttpUrl url = originalHttpUrl.newBuilder()
                     .addQueryParameter("api_key", apiKey)
+                    .addQueryParameter("format", "json")
                     .build();
 
             Request request = original.newBuilder()
