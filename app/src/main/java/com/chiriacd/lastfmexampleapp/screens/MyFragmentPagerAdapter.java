@@ -16,27 +16,17 @@ public class MyFragmentPagerAdapter extends FragmentPagerAdapter{
 
     //todo get current seach term from somewhere
 
-    private final FragmentManager fragmentManager;
     public MyFragmentPagerAdapter(FragmentManager fm) {
         super(fm);
-        fragmentManager = fm;
     }
 
     @Override
     public Fragment getItem(int position) {
-        Fragment fragment = fragmentManager.findFragmentByTag(getTag(position));
-        if (fragment != null) return fragment;
-        fragment = createNewFragmentAtPosition(position);
-        return fragment;
-    }
-
-    private Fragment createNewFragmentAtPosition(int position) {
         switch (position) {
             case ALBUM_FRAGMENT:
                 return AlbumFragment.Companion.newInstance();
         }
         return AlbumFragment.Companion.newInstance();
-
     }
 
     @Override
@@ -47,10 +37,6 @@ public class MyFragmentPagerAdapter extends FragmentPagerAdapter{
             case TRACK_FRAGMENT: return "Track";
         }
         return "";
-    }
-
-    private String getTag(int position) {
-        return "MyFragmentPagerAdapterFrament" + position;
     }
 
     @Override
