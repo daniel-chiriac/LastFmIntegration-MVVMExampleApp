@@ -1,11 +1,20 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
 
 def lastfmPropertyFile = rootProject.file("lastfmapi.properties")
 def lastfmProperties = new Properties()
 lastfmProperties.load(new FileInputStream(lastfmPropertyFile))
 
+kapt {
+    generateStubs = true
+}
+
 android {
+    dataBinding {
+        enabled = true
+    }
     compileSdkVersion 26
     defaultConfig {
         applicationId "com.chiriacd.lastfmexampleapp"
@@ -36,25 +45,33 @@ dependencies {
     def daggerVersion = 2.14
     def daggerBuild = 1
 
-    compile "com.google.dagger:dagger:$daggerVersion.$daggerBuild"
-    compile "com.google.dagger:dagger-android-support:$daggerVersion.$daggerBuild"
-    annotationProcessor "com.google.dagger:dagger-android-processor:$daggerVersion.$daggerBuild"
-    annotationProcessor "com.google.dagger:dagger-compiler:$daggerVersion.$daggerBuild"
-    compile group: 'org.danilopianini', name: 'gson-extras', version: '0.1.0'
-    compile 'io.reactivex.rxjava2:rxandroid:2.0.2'
-    compile 'io.reactivex.rxjava2:rxjava:2.1.9'
-    compile 'com.squareup.okhttp3:logging-interceptor:3.5.0'
+    implementation "com.google.dagger:dagger:$daggerVersion.$daggerBuild"
+    implementation "com.google.dagger:dagger-android-support:$daggerVersion.$daggerBuild"
+    kapt "com.google.dagger:dagger-android-processor:$daggerVersion.$daggerBuild"
+    kapt "com.google.dagger:dagger-compiler:$daggerVersion.$daggerBuild"
+    implementation group: 'org.danilopianini', name: 'gson-extras', version: '0.1.0'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
+    implementation 'io.reactivex.rxjava2:rxjava:2.1.9'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.5.0'
 
-    compile 'com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0'
-    compile 'com.squareup.retrofit2:converter-gson:2.1.0'
-    compile 'com.jakewharton.rxbinding2:rxbinding:2.1.0'
+    implementation 'com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.1.0'
+    implementation 'com.jakewharton.rxbinding2:rxbinding:2.1.0'
+
+    // view model
+    // view model
+    implementation "android.arch.lifecycle:extensions:1.1.0"
+    kapt "android.arch.lifecycle:compiler:1.1.0"
+
+    kapt 'com.android.databinding:compiler:3.0.1'
+
 
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     implementation 'com.android.support:design:26.1.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
 }
 repositories {
     mavenCentral()

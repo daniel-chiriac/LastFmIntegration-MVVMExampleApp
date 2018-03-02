@@ -1,16 +1,15 @@
 package com.chiriacd.lastfmexampleapp.injection.builder;
 
+import com.chiriacd.lastfmexampleapp.screens.MasterActivityModule;
+import com.chiriacd.lastfmexampleapp.screens.album.injection.AlbumFragmentProvider;
 import com.chiriacd.lastfmexampleapp.screens.MasterActivity;
 
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
 
-/**
- * Created by DanielC on 28/02/2018.
- */
-
 @Module
 public abstract class ActivityBuilder {
-    @ContributesAndroidInjector()
+
+    @ContributesAndroidInjector(modules = {MasterActivityModule.class, AlbumFragmentProvider.class})
     abstract MasterActivity bindMasterActivity();
 }

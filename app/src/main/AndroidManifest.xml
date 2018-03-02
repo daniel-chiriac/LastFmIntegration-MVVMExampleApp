@@ -16,6 +16,5 @@
                 <action android:name="android.intent.action.MAIN"/>
             </intent-filter>
         </activity>
-        <activity android:name="com.chiriacd.lastfmexampleapp.screens.DetailsActivity" />
     </application>
 </manifest>

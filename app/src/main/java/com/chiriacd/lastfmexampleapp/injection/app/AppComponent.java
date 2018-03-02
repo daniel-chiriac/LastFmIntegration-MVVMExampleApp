@@ -10,13 +10,14 @@ import javax.inject.Singleton;
 
 import dagger.BindsInstance;
 import dagger.Component;
-import dagger.android.AndroidInjectionModule;
+import dagger.android.AndroidInjector;
+import dagger.android.support.AndroidSupportInjectionModule;
 
 
-@Component(modules = {AndroidInjectionModule.class, ActivityBuilder.class, LastFmApiModule.class,
+@Component(modules = {AndroidSupportInjectionModule.class, ActivityBuilder.class, LastFmApiModule.class,
         AppModule.class})
 @Singleton
-public interface AppComponent {
+public interface AppComponent extends AndroidInjector<MyApp> {
     void inject(MyApp application);
 
     @Component.Builder
