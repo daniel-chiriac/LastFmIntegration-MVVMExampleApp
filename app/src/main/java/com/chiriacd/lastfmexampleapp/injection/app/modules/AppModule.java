@@ -4,8 +4,6 @@ import android.app.Application;
 import android.content.Context;
 
 
-import com.chiriacd.lastfmexampleapp.data.DataManager;
-import com.chiriacd.lastfmexampleapp.data.DefaultDataManager;
 import com.chiriacd.lastfmexampleapp.utils.AppSchedulers;
 import com.chiriacd.lastfmexampleapp.utils.SchedulersProvider;
 
@@ -23,11 +21,6 @@ public class AppModule {
     @Singleton
     Context provideContext(Application application) {
         return application;
-    }
-
-    @Provides
-    @Singleton DataManager provideDataManager(DefaultDataManager defaultDataManager) {
-        return defaultDataManager;
     }
 
     @Provides SchedulersProvider provideSchedulers() {

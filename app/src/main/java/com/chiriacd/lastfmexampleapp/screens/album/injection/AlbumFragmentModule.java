@@ -1,8 +1,13 @@
 package com.chiriacd.lastfmexampleapp.screens.album.injection;
 
-import com.chiriacd.lastfmexampleapp.data.DataManager;
-import com.chiriacd.lastfmexampleapp.screens.album.AlbumViewModel;
+import android.arch.lifecycle.MutableLiveData;
+
+import com.chiriacd.lastfmexampleapp.api.LastFmService;
+import com.chiriacd.lastfmexampleapp.screens.album.AlbumFragmentViewModel;
+import com.chiriacd.lastfmexampleapp.screens.album.AlbumItemViewModel;
 import com.chiriacd.lastfmexampleapp.utils.SchedulersProvider;
+
+import java.util.List;
 
 import dagger.Module;
 import dagger.Provides;
@@ -10,7 +15,14 @@ import dagger.Provides;
 @Module
 public class AlbumFragmentModule {
 
-    @Provides AlbumViewModel providesAlbumViewModel (DataManager dataManager, SchedulersProvider scheduler) {
-        return new AlbumViewModel(dataManager, scheduler);
+    @Provides
+    AlbumFragmentViewModel providesAlbumViewModel(LastFmService lastFmService, SchedulersProvider scheduler,
+                                                  MutableLiveData<List<AlbumItemViewModel>> liveData) {
+        return new AlbumFragmentViewModel(lastFmService, scheduler, liveData);
+    }
+
+    @Provides
+    MutableLiveData<List<AlbumItemViewModel>> provideAlbumsLiveData() {
+        return new MutableLiveData<>();
     }
 }

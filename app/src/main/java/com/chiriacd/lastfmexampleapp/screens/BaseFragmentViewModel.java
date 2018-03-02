@@ -2,26 +2,25 @@ package com.chiriacd.lastfmexampleapp.screens;
 
 import android.arch.lifecycle.ViewModel;
 
-import com.chiriacd.lastfmexampleapp.data.DataManager;
+import com.chiriacd.lastfmexampleapp.api.LastFmService;
 import com.chiriacd.lastfmexampleapp.utils.SchedulersProvider;
-
-import javax.inject.Inject;
 
 import io.reactivex.disposables.CompositeDisposable;
 
-public abstract class BaseViewModel extends ViewModel {
+public abstract class BaseFragmentViewModel extends ViewModel {
 
-    @Inject CompositeDisposable compositeDisposable;
+    private final CompositeDisposable compositeDisposable;
 
-    private DataManager dataManager;
-    private SchedulersProvider schedulers;
+    private final LastFmService dataManager;
+    private final SchedulersProvider schedulers;
 
-    public BaseViewModel (DataManager dataManager, SchedulersProvider schedulersProvider) {
+    public BaseFragmentViewModel(LastFmService dataManager, SchedulersProvider schedulersProvider) {
         this.dataManager = dataManager;
         this.schedulers = schedulersProvider;
+        this.compositeDisposable = new CompositeDisposable();
     }
 
-    public DataManager getDataManager() {
+    public LastFmService getLastFmService() {
         return dataManager;
     }
 

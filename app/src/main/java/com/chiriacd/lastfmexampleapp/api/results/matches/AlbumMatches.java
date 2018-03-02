@@ -6,13 +6,12 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-/**
- * Created by DanielC on 28/02/2018.
- */
-
-
 public class AlbumMatches {
 
     @SerializedName("album")
-    List<AlbumDetail> albums;
+    private List<AlbumDetail> albums;
+
+    public List<AlbumDetail> getAlbums() {
+        return albums;
+    }
 }

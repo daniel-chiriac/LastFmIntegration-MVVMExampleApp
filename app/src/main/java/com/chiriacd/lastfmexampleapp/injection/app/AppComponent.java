@@ -5,7 +5,7 @@ import android.app.Application;
 import com.chiriacd.lastfmexampleapp.injection.api.LastFmApiModule;
 import com.chiriacd.lastfmexampleapp.injection.app.modules.AppModule;
 import com.chiriacd.lastfmexampleapp.injection.builder.ActivityBuilder;
-import com.chiriacd.lastfmexampleapp.screens.BaseViewModel;
+import com.chiriacd.lastfmexampleapp.screens.BaseFragmentViewModel;
 
 import javax.inject.Singleton;
 
@@ -20,7 +20,7 @@ import dagger.android.support.AndroidSupportInjectionModule;
 @Singleton
 public interface AppComponent extends AndroidInjector<MyApp> {
     void inject(MyApp application);
-    void inject(BaseViewModel baseViewModel);
+    void inject(BaseFragmentViewModel baseFragmentViewModel);
 
     @Component.Builder
     interface Builder {
