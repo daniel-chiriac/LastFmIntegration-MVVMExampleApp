@@ -4,11 +4,16 @@ import android.app.Application;
 import android.content.Context;
 
 
+import com.chiriacd.lastfmexampleapp.data.DataManager;
+import com.chiriacd.lastfmexampleapp.data.DefaultDataManager;
+import com.chiriacd.lastfmexampleapp.utils.AppSchedulers;
+import com.chiriacd.lastfmexampleapp.utils.SchedulersProvider;
 
 import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+import io.reactivex.disposables.CompositeDisposable;
 
 
 @Module
@@ -18,5 +23,18 @@ public class AppModule {
     @Singleton
     Context provideContext(Application application) {
         return application;
+    }
+
+    @Provides
+    @Singleton DataManager provideDataManager(DefaultDataManager defaultDataManager) {
+        return defaultDataManager;
+    }
+
+    @Provides SchedulersProvider provideSchedulers() {
+        return new AppSchedulers();
+    }
+
+    @Provides CompositeDisposable provideCompositeDisposable() {
+        return new CompositeDisposable();
     }
 }
