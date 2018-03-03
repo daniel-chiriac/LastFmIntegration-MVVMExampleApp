@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import com.chiriacd.lastfmexampleapp.BR;
 import com.chiriacd.lastfmexampleapp.R;
 import com.chiriacd.lastfmexampleapp.databinding.MasterActivityBinding;
+import com.chiriacd.lastfmexampleapp.screens.pager.MyFragmentPagerAdapter;
 
 import javax.inject.Inject;
 

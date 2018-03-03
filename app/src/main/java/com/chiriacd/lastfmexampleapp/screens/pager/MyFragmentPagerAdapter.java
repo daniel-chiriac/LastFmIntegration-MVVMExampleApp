@@ -1,4 +1,4 @@
-package com.chiriacd.lastfmexampleapp.screens;
+package com.chiriacd.lastfmexampleapp.screens.pager;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -6,10 +6,9 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 import com.chiriacd.lastfmexampleapp.screens.album.AlbumFragment;
 
-public class MyFragmentPagerAdapter extends FragmentPagerAdapter{
+public class MyFragmentPagerAdapter extends FragmentPagerAdapter {
 
     private static final int FRAGMENT_COUNT = 3;
-
     private static final int ALBUM_FRAGMENT = 0;
     private static final int ARTIST_FRAGMENT = 1;
     private static final int TRACK_FRAGMENT = 2;
