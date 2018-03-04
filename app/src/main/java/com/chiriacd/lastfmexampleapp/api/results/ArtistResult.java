@@ -7,12 +7,20 @@ import com.chiriacd.lastfmexampleapp.api.results.matches.ArtistMatches;
 public class ArtistResult {
 
     @SerializedName("results")
-    Result result;
+    private Result result;
 
-    class Result extends PaginatedResult {
+    public Result getResult() {
+        return result;
+    }
+
+    public class Result extends PaginatedResult {
 
         @SerializedName("artistmatches")
-        public ArtistMatches content;
+        public ArtistMatches artistMatches;
+
+        public ArtistMatches getArtistMatches() {
+            return artistMatches;
+        }
     }
 
 }

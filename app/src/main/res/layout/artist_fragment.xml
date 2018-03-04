@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
+        <import type="android.view.View"/>
+        <variable
+            name="artistVM"
+            type="com.chiriacd.lastfmexampleapp.screens.pager.artist.ArtistFragmentViewModel"/>
     </data>
 
-    <android.support.constraint.ConstraintLayout
+    <android.support.v7.widget.RecyclerView
+        android:background="@android:color/holo_blue_dark"
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:artists_adapter="@{artistVM.artists}"/>
 
-    </android.support.constraint.ConstraintLayout>
 </layout>

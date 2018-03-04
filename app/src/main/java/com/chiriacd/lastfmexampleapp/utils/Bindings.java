@@ -6,6 +6,8 @@ import android.support.v7.widget.RecyclerView;
 
 import com.chiriacd.lastfmexampleapp.screens.pager.album.adapter.AlbumItemViewModel;
 import com.chiriacd.lastfmexampleapp.screens.pager.album.adapter.AlbumsAdapter;
+import com.chiriacd.lastfmexampleapp.screens.pager.artist.adapter.ArtistItemViewModel;
+import com.chiriacd.lastfmexampleapp.screens.pager.artist.adapter.ArtistsAdapter;
 
 public final class Bindings {
 
@@ -19,6 +21,15 @@ public final class Bindings {
         if (adapter != null) {
             adapter.clearAlbums();
             adapter.addAlbums(albums);
+        }
+    }  
+
+    @BindingAdapter("artists_adapter")
+    public static void updateArtists(RecyclerView recyclerView, ObservableList<ArtistItemViewModel> artists) {
+        ArtistsAdapter adapter = (ArtistsAdapter) recyclerView.getAdapter();
+        if (adapter != null) {
+            adapter.clearArtists();
+            adapter.addArtists(artists);
         }
     }
 

@@ -11,4 +11,8 @@ import java.util.List;
 public class ArtistMatches {
     @SerializedName("artist")
     List<ArtistDetail> artists;
+
+    public List<ArtistDetail> getArtists() {
+        return artists;
+    }
 }
