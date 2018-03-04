@@ -1,4 +1,4 @@
-package com.chiriacd.lastfmexampleapp.screens.album;
+package com.chiriacd.lastfmexampleapp.screens.pager.album;
 
 import android.arch.lifecycle.ViewModel;
 import android.databinding.ObservableField;

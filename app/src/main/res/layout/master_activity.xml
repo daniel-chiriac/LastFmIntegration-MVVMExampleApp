@@ -5,8 +5,11 @@
     <data>
         <import type="android.view.View"/>
         <variable
-            name="viewModel"
+            name="viewModels"
             type="com.chiriacd.lastfmexampleapp.screens.MasterViewModel"/>
+        <variable
+            name="viewPagerVM"
+            type="com.chiriacd.lastfmexampleapp.screens.pager.ViewPagerViewModel"/>
     </data>
 
     <LinearLayout
@@ -15,7 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <EditText
-            app:text="@{viewModel.searchTerm}"
+            android:text="@={viewModels.searchTerm}"
             android:hint="@string/search"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>

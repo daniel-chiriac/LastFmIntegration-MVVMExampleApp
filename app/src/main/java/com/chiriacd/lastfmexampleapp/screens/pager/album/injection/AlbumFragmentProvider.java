@@ -1,6 +1,6 @@
-package com.chiriacd.lastfmexampleapp.screens.album.injection;
+package com.chiriacd.lastfmexampleapp.screens.pager.album.injection;
 
-import com.chiriacd.lastfmexampleapp.screens.album.AlbumFragment;
+import com.chiriacd.lastfmexampleapp.screens.pager.album.AlbumFragment;
 
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;

@@ -1,18 +1,20 @@
-package com.chiriacd.lastfmexampleapp.screens.album.adapter;
+package com.chiriacd.lastfmexampleapp.screens.pager.album.adapter;
 
 import com.chiriacd.lastfmexampleapp.R;
-import com.chiriacd.lastfmexampleapp.screens.album.AlbumItemViewModel;
-import com.chiriacd.lastfmexampleapp.screens.album.BaseAdapter;
+import com.chiriacd.lastfmexampleapp.screens.pager.album.AlbumItemViewModel;
+import com.chiriacd.lastfmexampleapp.screens.pager.album.BaseAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.inject.Inject;
 
 
 public class AlbumsAdapter extends BaseAdapter {
 
     private List<AlbumItemViewModel> albums;
 
-    public AlbumsAdapter () {
+    @Inject public AlbumsAdapter () {
         albums = new ArrayList<>();
     }
 

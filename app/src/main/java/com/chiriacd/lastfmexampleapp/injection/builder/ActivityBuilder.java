@@ -1,7 +1,7 @@
 package com.chiriacd.lastfmexampleapp.injection.builder;
 
 import com.chiriacd.lastfmexampleapp.screens.MasterActivityModule;
-import com.chiriacd.lastfmexampleapp.screens.album.injection.AlbumFragmentProvider;
+import com.chiriacd.lastfmexampleapp.screens.pager.album.injection.AlbumFragmentProvider;
 import com.chiriacd.lastfmexampleapp.screens.MasterActivity;
 
 import dagger.Module;

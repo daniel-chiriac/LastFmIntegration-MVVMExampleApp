@@ -1,13 +1,11 @@
 package com.chiriacd.lastfmexampleapp.screens;
 
-import android.arch.lifecycle.ViewModel;
-
 import com.chiriacd.lastfmexampleapp.api.LastFmService;
 import com.chiriacd.lastfmexampleapp.utils.SchedulersProvider;
 
 import io.reactivex.disposables.CompositeDisposable;
 
-public abstract class BaseFragmentViewModel extends ViewModel {
+public abstract class BaseFragmentViewModel extends SearchableViewModel {
 
     private final CompositeDisposable compositeDisposable;
 

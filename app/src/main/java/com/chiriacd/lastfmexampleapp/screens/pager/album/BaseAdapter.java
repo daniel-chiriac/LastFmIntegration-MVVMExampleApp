@@ -1,4 +1,4 @@
-package com.chiriacd.lastfmexampleapp.screens.album;
+package com.chiriacd.lastfmexampleapp.screens.pager.album;
 
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;

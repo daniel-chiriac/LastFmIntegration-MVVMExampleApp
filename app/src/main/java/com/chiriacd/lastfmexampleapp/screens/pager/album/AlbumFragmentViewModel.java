@@ -1,5 +1,4 @@
-package com.chiriacd.lastfmexampleapp.screens.album;
-
+package com.chiriacd.lastfmexampleapp.screens.pager.album;
 
 import android.arch.lifecycle.MutableLiveData;
 import android.databinding.ObservableArrayList;
@@ -23,7 +22,8 @@ public class AlbumFragmentViewModel extends BaseFragmentViewModel {
     private final ObservableList<AlbumItemViewModel> albums;
 
     @Inject
-    public AlbumFragmentViewModel(LastFmService lastFmService, SchedulersProvider schedulersProvider,
+    public AlbumFragmentViewModel(LastFmService lastFmService,
+                                  SchedulersProvider schedulersProvider,
                                   MutableLiveData<List<AlbumItemViewModel>> liveData) {
         super(lastFmService, schedulersProvider);
         albumsLiveData = liveData;
@@ -57,5 +57,9 @@ public class AlbumFragmentViewModel extends BaseFragmentViewModel {
         this.albums.addAll(albums);
     }
 
-
+    @Override
+    public void search(String term) {
+        Log.i("4Dan - master search", term + "");
+        updateAlbums(term);
+    }
 }

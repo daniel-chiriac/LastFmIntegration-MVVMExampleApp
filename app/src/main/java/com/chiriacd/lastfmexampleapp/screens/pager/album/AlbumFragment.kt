@@ -1,6 +1,8 @@
-package com.chiriacd.lastfmexampleapp.screens.album
+package com.chiriacd.lastfmexampleapp.screens.pager.album
 
 import android.arch.lifecycle.Observer
+import android.arch.lifecycle.ViewModelProvider
+import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
@@ -8,12 +10,15 @@ import com.chiriacd.lastfmexampleapp.BR
 import com.chiriacd.lastfmexampleapp.R
 import com.chiriacd.lastfmexampleapp.databinding.AlbumFragmentBinding
 import com.chiriacd.lastfmexampleapp.screens.BaseFragment
-import com.chiriacd.lastfmexampleapp.screens.album.adapter.AlbumsAdapter
+import com.chiriacd.lastfmexampleapp.screens.pager.album.adapter.AlbumsAdapter
 import javax.inject.Inject
-
+@JvmSuppressWildcards
 class AlbumFragment : BaseFragment<AlbumFragmentBinding, AlbumFragmentViewModel>() {
 
-    @Inject lateinit var vm: AlbumFragmentViewModel
+    @Inject lateinit var vmFactory:  ViewModelProvider.Factory
+    @Inject lateinit var albumsAdapter: AlbumsAdapter
+
+    lateinit var albumFragmentViewModel: AlbumFragmentViewModel
 
     companion object {
         fun newInstance(): AlbumFragment {
@@ -26,7 +31,8 @@ class AlbumFragment : BaseFragment<AlbumFragmentBinding, AlbumFragmentViewModel>
     }
 
     override fun getViewModel(): AlbumFragmentViewModel {
-        return vm
+        albumFragmentViewModel = ViewModelProviders.of(activity, vmFactory).get(AlbumFragmentViewModel::class.java)
+        return albumFragmentViewModel
     }
 
     override fun getLayoutId(): Int {
@@ -39,13 +45,12 @@ class AlbumFragment : BaseFragment<AlbumFragmentBinding, AlbumFragmentViewModel>
     }
 
     private fun subscribeToLiveData() {
-        viewModel.albumsLiveData.observe(this, Observer { a -> viewModel.setAlbums(a) })
+        albumFragmentViewModel.albumsLiveData.observe(this, Observer { a -> albumFragmentViewModel.setAlbums(a) })
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewDataBinding.recyclerView.layoutManager = LinearLayoutManager(context)
-        viewDataBinding.recyclerView.adapter = AlbumsAdapter()
-        viewModel.updateAlbums("Metallica")
+        viewDataBinding.recyclerView.adapter = albumsAdapter
     }
 }

@@ -1,5 +1,7 @@
 package com.chiriacd.lastfmexampleapp.screens;
 
+import android.arch.lifecycle.ViewModelProvider;
+import android.arch.lifecycle.ViewModelProviders;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -15,16 +17,18 @@ import dagger.android.support.DaggerAppCompatActivity;
 
 public class MasterActivity extends DaggerAppCompatActivity  {
 
-    @Inject MasterViewModel viewModel;
-
+    @Inject ViewModelProvider.Factory viewModelFactory;
     private MasterActivityBinding viewDataBinding;
+
+    @Inject MyFragmentPagerAdapter pagerAdapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        MasterViewModel masterViewModel = ViewModelProviders.of(this, viewModelFactory).get(MasterViewModel.class);
         viewDataBinding = DataBindingUtil.setContentView(this, R.layout.master_activity);
-        viewDataBinding.setVariable(BR.viewModel, viewModel);
+        viewDataBinding.setVariable(BR.viewModel, masterViewModel);
         viewDataBinding.executePendingBindings();
-        viewDataBinding.viewpager.setAdapter(new MyFragmentPagerAdapter(getSupportFragmentManager()));
+        viewDataBinding.viewpager.setAdapter(pagerAdapter);
     }
 }

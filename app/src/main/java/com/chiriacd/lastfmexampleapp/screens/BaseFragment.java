@@ -1,20 +1,27 @@
 package com.chiriacd.lastfmexampleapp.screens;
 
+import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModel;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import javax.inject.Inject;
+
 import dagger.android.support.DaggerFragment;
 
-public abstract class BaseFragment<T extends ViewDataBinding, V extends ViewModel> extends DaggerFragment {
+public abstract class BaseFragment<T extends ViewDataBinding, V extends SearchableViewModel> extends DaggerFragment {
 
     private T viewDataBinding;
+
+    @Inject MasterViewModel masterViewModel;
 
     public abstract int getBindingVariable();
 
@@ -37,5 +44,6 @@ public abstract class BaseFragment<T extends ViewDataBinding, V extends ViewMode
         super.onViewCreated(view, savedInstanceState);
         viewDataBinding.setVariable(getBindingVariable(), getViewModel());
         viewDataBinding.executePendingBindings();
+        masterViewModel.getSearchTermLiveData().observe(this, s -> getViewModel().search(s));
     }
 }
