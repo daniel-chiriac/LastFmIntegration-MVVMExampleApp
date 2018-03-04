@@ -8,6 +8,8 @@ import com.chiriacd.lastfmexampleapp.screens.pager.album.adapter.AlbumItemViewMo
 import com.chiriacd.lastfmexampleapp.screens.pager.album.adapter.AlbumsAdapter;
 import com.chiriacd.lastfmexampleapp.screens.pager.artist.adapter.ArtistItemViewModel;
 import com.chiriacd.lastfmexampleapp.screens.pager.artist.adapter.ArtistsAdapter;
+import com.chiriacd.lastfmexampleapp.screens.pager.track.adapter.TrackAdapter;
+import com.chiriacd.lastfmexampleapp.screens.pager.track.adapter.TrackItemViewModel;
 
 public final class Bindings {
 
@@ -30,6 +32,15 @@ public final class Bindings {
         if (adapter != null) {
             adapter.clearArtists();
             adapter.addArtists(artists);
+        }
+    }
+
+    @BindingAdapter("tracks_adapter")
+    public static void updateTracks(RecyclerView recyclerView, ObservableList<TrackItemViewModel> tracks) {
+        TrackAdapter adapter = (TrackAdapter) recyclerView.getAdapter();
+        if (adapter != null) {
+            adapter.clearTracks();
+            adapter.addTracks(tracks);
         }
     }
 

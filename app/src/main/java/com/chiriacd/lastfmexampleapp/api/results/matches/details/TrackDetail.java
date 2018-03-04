@@ -5,6 +5,14 @@ package com.chiriacd.lastfmexampleapp.api.results.matches.details;
  */
 
 public class TrackDetail {
-    String name;
-    String artist;
+    private String name;
+    private String artist;
+
+    public String getName() {
+        return name;
+    }
+
+    public String getArtist() {
+        return artist;
+    }
 }

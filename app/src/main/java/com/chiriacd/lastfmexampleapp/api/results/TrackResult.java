@@ -13,9 +13,17 @@ public class TrackResult {
     @SerializedName("results")
     Result result;
 
-    class Result extends PaginatedResult {
+    public Result getResult() {
+        return result;
+    }
+
+    public class Result extends PaginatedResult {
 
         @SerializedName("trackmatches")
-        public TrackMatches content;
+        public TrackMatches trackMatches;
+
+        public TrackMatches getTrackMatches() {
+            return trackMatches;
+        }
     }
 }

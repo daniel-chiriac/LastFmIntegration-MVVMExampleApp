@@ -12,5 +12,9 @@ import java.util.List;
 public class TrackMatches {
 
     @SerializedName("track")
-    List<TrackDetail> artists;
+    List<TrackDetail> tracks;
+
+    public List<TrackDetail> getTracks() {
+        return tracks;
+    }
 }
