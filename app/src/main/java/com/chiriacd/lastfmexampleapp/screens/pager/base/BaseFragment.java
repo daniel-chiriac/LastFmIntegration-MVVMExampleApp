@@ -1,4 +1,4 @@
-package com.chiriacd.lastfmexampleapp.screens;
+package com.chiriacd.lastfmexampleapp.screens.pager.base;
 
 import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
@@ -12,7 +12,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.chiriacd.lastfmexampleapp.screens.qualifier.MasterVM;
+import com.chiriacd.lastfmexampleapp.screens.MasterViewModel;
+import com.chiriacd.lastfmexampleapp.utils.qualifier.MasterVM;
 
 import javax.inject.Inject;
 

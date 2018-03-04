@@ -10,7 +10,7 @@ import com.chiriacd.lastfmexampleapp.BR;
 import com.chiriacd.lastfmexampleapp.R;
 import com.chiriacd.lastfmexampleapp.databinding.MasterActivityBinding;
 import com.chiriacd.lastfmexampleapp.screens.pager.MyFragmentPagerAdapter;
-import com.chiriacd.lastfmexampleapp.screens.qualifier.MasterVM;
+import com.chiriacd.lastfmexampleapp.utils.qualifier.MasterVM;
 
 import javax.inject.Inject;
 

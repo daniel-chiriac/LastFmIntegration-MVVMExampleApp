@@ -6,9 +6,9 @@ import android.arch.lifecycle.ViewModelProvider;
 import com.chiriacd.lastfmexampleapp.ViewModelProviderFactory;
 import com.chiriacd.lastfmexampleapp.api.LastFmService;
 import com.chiriacd.lastfmexampleapp.screens.pager.album.AlbumFragmentViewModel;
-import com.chiriacd.lastfmexampleapp.screens.pager.album.AlbumItemViewModel;
+import com.chiriacd.lastfmexampleapp.screens.pager.album.adapter.AlbumItemViewModel;
 import com.chiriacd.lastfmexampleapp.screens.pager.album.adapter.AlbumsAdapter;
-import com.chiriacd.lastfmexampleapp.screens.qualifier.AlbumVM;
+import com.chiriacd.lastfmexampleapp.utils.qualifier.AlbumVM;
 import com.chiriacd.lastfmexampleapp.utils.SchedulersProvider;
 
 import java.util.List;

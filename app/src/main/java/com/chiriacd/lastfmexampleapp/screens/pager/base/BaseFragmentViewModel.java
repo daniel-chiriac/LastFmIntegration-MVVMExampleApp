@@ -1,4 +1,4 @@
-package com.chiriacd.lastfmexampleapp.screens;
+package com.chiriacd.lastfmexampleapp.screens.pager.base;
 
 import com.chiriacd.lastfmexampleapp.api.LastFmService;
 import com.chiriacd.lastfmexampleapp.utils.SchedulersProvider;

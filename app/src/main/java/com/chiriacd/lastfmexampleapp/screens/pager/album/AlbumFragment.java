@@ -1,6 +1,5 @@
 package com.chiriacd.lastfmexampleapp.screens.pager.album;
 
-import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
@@ -13,9 +12,10 @@ import android.view.View;
 import com.chiriacd.lastfmexampleapp.BR;
 import com.chiriacd.lastfmexampleapp.R;
 import com.chiriacd.lastfmexampleapp.databinding.AlbumFragmentBinding;
-import com.chiriacd.lastfmexampleapp.screens.BaseFragment;
+import com.chiriacd.lastfmexampleapp.screens.pager.base.BaseFragment;
+import com.chiriacd.lastfmexampleapp.screens.pager.album.adapter.AlbumItemViewModel;
 import com.chiriacd.lastfmexampleapp.screens.pager.album.adapter.AlbumsAdapter;
-import com.chiriacd.lastfmexampleapp.screens.qualifier.AlbumVM;
+import com.chiriacd.lastfmexampleapp.utils.qualifier.AlbumVM;
 
 import java.util.List;
 

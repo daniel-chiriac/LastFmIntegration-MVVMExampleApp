@@ -4,7 +4,7 @@ import android.databinding.BindingAdapter;
 import android.databinding.ObservableList;
 import android.support.v7.widget.RecyclerView;
 
-import com.chiriacd.lastfmexampleapp.screens.pager.album.AlbumItemViewModel;
+import com.chiriacd.lastfmexampleapp.screens.pager.album.adapter.AlbumItemViewModel;
 import com.chiriacd.lastfmexampleapp.screens.pager.album.adapter.AlbumsAdapter;
 
 public final class Bindings {

@@ -3,8 +3,8 @@ package com.chiriacd.lastfmexampleapp.screens.pager.track;
 import com.chiriacd.lastfmexampleapp.BR;
 import com.chiriacd.lastfmexampleapp.R;
 import com.chiriacd.lastfmexampleapp.databinding.TrackFragmentBinding;
-import com.chiriacd.lastfmexampleapp.screens.BaseFragment;
-import com.chiriacd.lastfmexampleapp.screens.SearchableViewModel;
+import com.chiriacd.lastfmexampleapp.screens.pager.base.BaseFragment;
+import com.chiriacd.lastfmexampleapp.screens.pager.base.SearchableViewModel;
 
 
 public class TrackFragment extends BaseFragment<TrackFragmentBinding, SearchableViewModel> {

@@ -44,7 +44,7 @@ public class MasterViewModel extends ViewModel {
         return searchTerm;
     }
 
-    MutableLiveData<String> getSearchTermLiveData() {
+    public MutableLiveData<String> getSearchTermLiveData() {
         return searchTermLiveData;
     }
 

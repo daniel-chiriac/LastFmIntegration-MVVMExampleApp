@@ -8,7 +8,8 @@ import android.util.Log;
 import com.chiriacd.lastfmexampleapp.api.LastFmService;
 import com.chiriacd.lastfmexampleapp.api.results.AlbumResult;
 import com.chiriacd.lastfmexampleapp.api.results.matches.AlbumMatches;
-import com.chiriacd.lastfmexampleapp.screens.BaseFragmentViewModel;
+import com.chiriacd.lastfmexampleapp.screens.pager.base.BaseFragmentViewModel;
+import com.chiriacd.lastfmexampleapp.screens.pager.album.adapter.AlbumItemViewModel;
 import com.chiriacd.lastfmexampleapp.utils.SchedulersProvider;
 
 import java.util.List;

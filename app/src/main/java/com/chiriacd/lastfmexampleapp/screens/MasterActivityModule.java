@@ -6,7 +6,7 @@ import android.support.v4.app.FragmentManager;
 
 import com.chiriacd.lastfmexampleapp.ViewModelProviderFactory;
 import com.chiriacd.lastfmexampleapp.screens.pager.MyFragmentPagerAdapter;
-import com.chiriacd.lastfmexampleapp.screens.qualifier.MasterVM;
+import com.chiriacd.lastfmexampleapp.utils.qualifier.MasterVM;
 
 import dagger.Module;
 import dagger.Provides;

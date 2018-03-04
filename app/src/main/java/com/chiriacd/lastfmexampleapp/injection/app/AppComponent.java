@@ -5,7 +5,7 @@ import android.app.Application;
 import com.chiriacd.lastfmexampleapp.injection.api.LastFmApiModule;
 import com.chiriacd.lastfmexampleapp.injection.app.modules.AppModule;
 import com.chiriacd.lastfmexampleapp.injection.builder.ActivityBuilder;
-import com.chiriacd.lastfmexampleapp.screens.BaseFragmentViewModel;
+import com.chiriacd.lastfmexampleapp.screens.pager.base.BaseFragmentViewModel;
 
 import javax.inject.Singleton;
 

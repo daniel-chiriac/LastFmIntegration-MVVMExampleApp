@@ -1,4 +1,4 @@
-package com.chiriacd.lastfmexampleapp.screens.qualifier;
+package com.chiriacd.lastfmexampleapp.utils.qualifier;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -11,5 +11,5 @@ import javax.inject.Qualifier;
 
 @Qualifier
 @Retention(RetentionPolicy.RUNTIME)
-public @interface MasterVM {
+public @interface AlbumVM {
 }

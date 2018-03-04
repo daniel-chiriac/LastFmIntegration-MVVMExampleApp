@@ -1,8 +1,7 @@
 package com.chiriacd.lastfmexampleapp.screens.pager.album.adapter;
 
 import com.chiriacd.lastfmexampleapp.R;
-import com.chiriacd.lastfmexampleapp.screens.pager.album.AlbumItemViewModel;
-import com.chiriacd.lastfmexampleapp.screens.pager.album.BaseAdapter;
+import com.chiriacd.lastfmexampleapp.screens.pager.BaseAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
