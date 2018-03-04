@@ -10,6 +10,7 @@ import com.chiriacd.lastfmexampleapp.BR;
 import com.chiriacd.lastfmexampleapp.R;
 import com.chiriacd.lastfmexampleapp.databinding.MasterActivityBinding;
 import com.chiriacd.lastfmexampleapp.screens.pager.MyFragmentPagerAdapter;
+import com.chiriacd.lastfmexampleapp.screens.qualifier.MasterVM;
 
 import javax.inject.Inject;
 
@@ -17,7 +18,7 @@ import dagger.android.support.DaggerAppCompatActivity;
 
 public class MasterActivity extends DaggerAppCompatActivity  {
 
-    @Inject ViewModelProvider.Factory viewModelFactory;
+    @Inject @MasterVM ViewModelProvider.Factory viewModelFactory;
     private MasterActivityBinding viewDataBinding;
 
     @Inject MyFragmentPagerAdapter pagerAdapter;

@@ -2,23 +2,18 @@ package com.chiriacd.lastfmexampleapp.screens;
 
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
-import android.databinding.BaseObservable;
 import android.databinding.ObservableField;
 import android.util.Log;
 
 import com.chiriacd.lastfmexampleapp.utils.RxUtils;
-import com.chiriacd.lastfmexampleapp.utils.SchedulersProvider;
 
 import java.util.concurrent.TimeUnit;
 
 import javax.inject.Inject;
 
 import io.reactivex.Observable;
-import io.reactivex.ObservableSource;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.functions.Consumer;
-import io.reactivex.functions.Function;
-import io.reactivex.schedulers.Schedulers;
+import io.reactivex.disposables.CompositeDisposable;
 
 public class MasterViewModel extends ViewModel {
 
@@ -26,17 +21,13 @@ public class MasterViewModel extends ViewModel {
 
     private final MutableLiveData<String> searchTermLiveData = new MutableLiveData<>();
 
-    @Inject
-    MasterViewModel() {
-        searchTerm.addOnPropertyChangedCallback(new android.databinding.Observable.OnPropertyChangedCallback() {
-            @Override
-            public void onPropertyChanged(android.databinding.Observable sender, int propertyId) {
-                Log.i("4dan", "Schanged: " + searchTerm.get());
+    private CompositeDisposable compositeDisposable;
 
-            }
-        });
-        RxUtils.toObservable(searchTerm)
+    @Inject MasterViewModel() {
+        compositeDisposable = new CompositeDisposable();
+        compositeDisposable.add(RxUtils.toObservable(searchTerm)
                 .debounce(1, TimeUnit.SECONDS)
+                .distinctUntilChanged()
                 .onErrorResumeNext(throwable -> {
                     return Observable.just(throwable.getMessage());
                 })
@@ -45,14 +36,21 @@ public class MasterViewModel extends ViewModel {
                     searchTermLiveData.setValue(s);
                     Log.i("4dan", "S: " + s);
                 })
-                .subscribe();
+                .subscribe());
+
     }
 
     public ObservableField<String> getSearchTerm() {
         return searchTerm;
     }
 
-    public MutableLiveData<String> getSearchTermLiveData() {
+    MutableLiveData<String> getSearchTermLiveData() {
         return searchTermLiveData;
+    }
+
+    @Override
+    protected void onCleared() {
+        super.onCleared();
+        compositeDisposable.clear();
     }
 }

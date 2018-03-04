@@ -1,12 +1,8 @@
 package com.chiriacd.lastfmexampleapp.utils;
 
 import android.databinding.BindingAdapter;
-import android.databinding.InverseBindingAdapter;
-import android.databinding.ObservableField;
 import android.databinding.ObservableList;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.widget.EditText;
 
 import com.chiriacd.lastfmexampleapp.screens.pager.album.AlbumItemViewModel;
 import com.chiriacd.lastfmexampleapp.screens.pager.album.adapter.AlbumsAdapter;

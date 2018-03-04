@@ -1,17 +1,18 @@
 package com.chiriacd.lastfmexampleapp.screens;
 
-import android.arch.lifecycle.Observer;
-import android.arch.lifecycle.ViewModel;
+import android.arch.lifecycle.ViewModelProvider;
+import android.arch.lifecycle.ViewModelProviders;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.chiriacd.lastfmexampleapp.screens.qualifier.MasterVM;
 
 import javax.inject.Inject;
 
@@ -21,7 +22,7 @@ public abstract class BaseFragment<T extends ViewDataBinding, V extends Searchab
 
     private T viewDataBinding;
 
-    @Inject MasterViewModel masterViewModel;
+    @Inject @MasterVM ViewModelProvider.Factory masterFactory;
 
     public abstract int getBindingVariable();
 
@@ -31,6 +32,18 @@ public abstract class BaseFragment<T extends ViewDataBinding, V extends Searchab
 
     public T getViewDataBinding() {
         return viewDataBinding;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        MasterViewModel masterViewModel = ViewModelProviders.of(getActivity(), masterFactory).get(MasterViewModel.class);
+        //observing live data, seems to keep adding observers on screen rotation. Also,
+        //onNewSearchTerm is triggered on rotation, regardless of having no data changes (the term
+        //didn't change). There seems to be some recent issues around this explained in this post:
+        //https://github.com/googlesamples/android-architecture-components/issues/47
+
+        masterViewModel.getSearchTermLiveData().observe(this, s -> getViewModel().search(s));
     }
 
     @Override
@@ -44,6 +57,5 @@ public abstract class BaseFragment<T extends ViewDataBinding, V extends Searchab
         super.onViewCreated(view, savedInstanceState);
         viewDataBinding.setVariable(getBindingVariable(), getViewModel());
         viewDataBinding.executePendingBindings();
-        masterViewModel.getSearchTermLiveData().observe(this, s -> getViewModel().search(s));
     }
 }

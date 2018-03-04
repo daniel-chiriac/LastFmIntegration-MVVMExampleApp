@@ -60,6 +60,7 @@ public class AlbumFragmentViewModel extends BaseFragmentViewModel {
     @Override
     public void search(String term) {
         Log.i("4Dan - master search", term + "");
+        Log.i("hashCheck", "AlbumViewModel" + hashCode());
         updateAlbums(term);
     }
 }
