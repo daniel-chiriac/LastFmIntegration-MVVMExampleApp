@@ -9,14 +9,22 @@ public class AlbumResult {
     @SerializedName("results")
     private Result result;
 
+    public AlbumResult(Result result) {
+        this.result = result;
+    }
+
     public Result getResult() {
         return result;
     }
 
-    public class Result extends PaginatedResult {
+    public static class Result extends PaginatedResult {
 
         @SerializedName("albummatches")
         private AlbumMatches albumMatches;
+
+        public Result(AlbumMatches albumMatches) {
+            this.albumMatches = albumMatches;
+        }
 
         public AlbumMatches getAlbumMatches() {
             return albumMatches;

@@ -25,9 +25,9 @@ public class AlbumFragmentViewModel extends BaseFragmentViewModel {
     @Inject
     public AlbumFragmentViewModel(LastFmService lastFmService,
                                   SchedulersProvider schedulersProvider,
-                                  MutableLiveData<List<AlbumItemViewModel>> liveData) {
+                                  MutableLiveData<List<AlbumItemViewModel>> albumsLiveData) {
         super(lastFmService, schedulersProvider);
-        albumsLiveData = liveData;
+        this.albumsLiveData = albumsLiveData;
         albums = new ObservableArrayList<>();
     }
 
@@ -35,7 +35,7 @@ public class AlbumFragmentViewModel extends BaseFragmentViewModel {
         return albums;
     }
 
-    public void updateAlbums(String searchTerm) {
+    private void updateAlbums(String searchTerm) {
         getCompositeDisposable().add(getLastFmService()
                 .searchByAlbum(searchTerm)
                 .subscribeOn(getSchedulers().io())
@@ -60,8 +60,6 @@ public class AlbumFragmentViewModel extends BaseFragmentViewModel {
 
     @Override
     public void search(String term) {
-        Log.i("4Dan - master search", term + "");
-        Log.i("hashCheck", "AlbumViewModel" + hashCode());
         updateAlbums(term);
     }
 }
