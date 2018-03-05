@@ -18,6 +18,9 @@ Use the api_url from the example file.
 
 To just run the app, install the apk in the release directory.
 
+**TODO**
+  - Add pagination support - currently shows just the first 50 items in a search;
+
 **About the project**
 
 This is my first app I wrote using android databinding and the MVVM pattern. 
