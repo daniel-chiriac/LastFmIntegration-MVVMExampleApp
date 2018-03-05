@@ -8,4 +8,8 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="album_item_textview">
+
+    </style>
+
 </resources>

@@ -9,8 +9,9 @@
             type="com.chiriacd.lastfmexampleapp.screens.pager.artist.ArtistFragmentViewModel"/>
     </data>
 
+
     <android.support.v7.widget.RecyclerView
-        android:background="@android:color/holo_blue_dark"
+        android:background="@android:color/darker_gray"
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
