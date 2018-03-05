@@ -8,6 +8,7 @@ import android.util.Log;
 import com.chiriacd.lastfmexampleapp.api.LastFmService;
 import com.chiriacd.lastfmexampleapp.api.results.ArtistResult;
 import com.chiriacd.lastfmexampleapp.api.results.matches.ArtistMatches;
+import com.chiriacd.lastfmexampleapp.api.results.matches.details.ArtistDetail;
 import com.chiriacd.lastfmexampleapp.screens.pager.artist.adapter.ArtistItemViewModel;
 import com.chiriacd.lastfmexampleapp.screens.pager.base.BaseFragmentViewModel;
 import com.chiriacd.lastfmexampleapp.utils.SchedulersProvider;
@@ -37,7 +38,7 @@ public class ArtistFragmentViewModel extends BaseFragmentViewModel {
                 .map(ArtistResult.Result::getArtistMatches)
                 .map(ArtistMatches::getArtists)
                 .flatMapIterable(albumDetails -> albumDetails)
-                .map(ArtistItemViewModel::new)
+                .map((ArtistDetail albumDetail) -> new ArtistItemViewModel(albumDetail, this::onTrackClick))
                 .toList()
                 .subscribe(artistsLiveData::setValue, throwable -> Log.e("4Dan", throwable.getMessage())));
     }

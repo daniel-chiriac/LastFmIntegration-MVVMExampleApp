@@ -3,20 +3,19 @@ package com.chiriacd.lastfmexampleapp.screens.pager.track.adapter;
 import android.databinding.ObservableField;
 
 import com.chiriacd.lastfmexampleapp.api.results.matches.details.TrackDetail;
+import com.chiriacd.lastfmexampleapp.screens.pager.ItemClickListener;
 
-public class TrackItemViewModel {
+public class TrackItemViewModel extends BaseItemViewModel {
 
     private final ObservableField<String> name;
     private final ObservableField<String> artist;
     private final ObservableField<String> url;
 
-    private final OnClickListener listener;
-
-    public TrackItemViewModel(TrackDetail trackDetail, OnClickListener listener) {
+    public TrackItemViewModel(TrackDetail trackDetail, ItemClickListener listener) {
+        super(listener);
         name = new ObservableField<>(trackDetail.getName());
         artist = new ObservableField<>(trackDetail.getArtist());
         url = new ObservableField<>(trackDetail.getUrl());
-        this.listener = listener;
     }
 
     public ObservableField<String> getName() {
@@ -27,13 +26,8 @@ public class TrackItemViewModel {
         return artist;
     }
 
-    public void itemClicked() {
-        if (listener != null) {
-            listener.onItemWithUrl(url.get());
-        }
-    }
-
-    public interface OnClickListener {
-        void onItemWithUrl(String url);
+    @Override
+    public String getItemClickedUrl() {
+        return url.get();
     }
 }

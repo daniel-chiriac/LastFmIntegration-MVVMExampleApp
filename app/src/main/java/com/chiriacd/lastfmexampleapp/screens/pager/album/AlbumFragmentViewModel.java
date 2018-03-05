@@ -8,6 +8,7 @@ import android.util.Log;
 import com.chiriacd.lastfmexampleapp.api.LastFmService;
 import com.chiriacd.lastfmexampleapp.api.results.AlbumResult;
 import com.chiriacd.lastfmexampleapp.api.results.matches.AlbumMatches;
+import com.chiriacd.lastfmexampleapp.api.results.matches.details.AlbumDetail;
 import com.chiriacd.lastfmexampleapp.screens.pager.base.BaseFragmentViewModel;
 import com.chiriacd.lastfmexampleapp.screens.pager.album.adapter.AlbumItemViewModel;
 import com.chiriacd.lastfmexampleapp.utils.SchedulersProvider;
@@ -44,7 +45,7 @@ public class AlbumFragmentViewModel extends BaseFragmentViewModel {
                 .map(AlbumResult.Result::getAlbumMatches)
                 .map(AlbumMatches::getAlbums)
                 .flatMapIterable(albumDetails -> albumDetails)
-                .map(AlbumItemViewModel::new)
+                .map((AlbumDetail albumDetail) -> new AlbumItemViewModel(albumDetail, this::onTrackClick))
                 .toList()
                 .subscribe(albumsLiveData::setValue, throwable -> Log.e("4Dan", throwable.getMessage())));
     }

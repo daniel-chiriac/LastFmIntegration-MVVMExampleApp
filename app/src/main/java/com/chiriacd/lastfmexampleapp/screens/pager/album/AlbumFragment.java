@@ -6,15 +6,15 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
-import android.util.Log;
 import android.view.View;
 
 import com.chiriacd.lastfmexampleapp.BR;
 import com.chiriacd.lastfmexampleapp.R;
 import com.chiriacd.lastfmexampleapp.databinding.AlbumFragmentBinding;
-import com.chiriacd.lastfmexampleapp.screens.pager.base.BaseFragment;
 import com.chiriacd.lastfmexampleapp.screens.pager.album.adapter.AlbumItemViewModel;
 import com.chiriacd.lastfmexampleapp.screens.pager.album.adapter.AlbumsAdapter;
+import com.chiriacd.lastfmexampleapp.screens.pager.base.BaseFragment;
+import com.chiriacd.lastfmexampleapp.utils.NavigationUtils;
 import com.chiriacd.lastfmexampleapp.utils.qualifier.AlbumVM;
 
 import java.util.List;
@@ -57,12 +57,15 @@ public class AlbumFragment extends BaseFragment<AlbumFragmentBinding, AlbumFragm
         super.onViewCreated(view, savedInstanceState);
         getViewDataBinding().recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         getViewDataBinding().recyclerView.setAdapter(albumsAdapter);
-        Log.i("hashCheck", "AlbumFragment: " + hashCode());
     }
 
     private void subscribeToLiveData() {
-        getViewModel().getAlbumsLiveData()
-                .observe(this, this::onAlbumsChanged);
+        getViewModel().getAlbumsLiveData().observe(this, this::onAlbumsChanged);
+        getViewModel().getClickedUrl().observe(this, this::onAlbumItemClick);
+    }
+
+    private void onAlbumItemClick(String url) {
+        NavigationUtils.openWebBrowser(getContext(), url);
     }
 
     private void onAlbumsChanged(List<AlbumItemViewModel> albums) {

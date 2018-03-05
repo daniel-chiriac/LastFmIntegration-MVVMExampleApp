@@ -22,14 +22,12 @@ import javax.inject.Inject;
 public class TrackFragmentViewModel extends BaseFragmentViewModel {
 
     private final MutableLiveData<List<TrackItemViewModel>> tracksLiveData;
-    private final MutableLiveData<String> clickedUrl;
 
     private final ObservableList<TrackItemViewModel> tracks;
 
     @Inject public TrackFragmentViewModel(LastFmService dataManager, SchedulersProvider schedulersProvider) {
         super(dataManager, schedulersProvider);
         tracksLiveData = new MutableLiveData<>();
-        clickedUrl = new MutableLiveData<>();
         tracks = new ObservableArrayList<>();
     }
 
@@ -49,14 +47,6 @@ public class TrackFragmentViewModel extends BaseFragmentViewModel {
 
     public ObservableList<TrackItemViewModel> getTracks() {
         return tracks;
-    }
-
-    private void onTrackClick(String url) {
-        clickedUrl.setValue(url);
-    }
-
-    public MutableLiveData<String> getClickedUrl() {
-        return clickedUrl;
     }
 
     public MutableLiveData<List<TrackItemViewModel>> getTracksLiveData() {

@@ -17,6 +17,7 @@ import com.chiriacd.lastfmexampleapp.databinding.TrackFragmentBinding;
 import com.chiriacd.lastfmexampleapp.screens.pager.base.BaseFragment;
 import com.chiriacd.lastfmexampleapp.screens.pager.track.adapter.TrackAdapter;
 import com.chiriacd.lastfmexampleapp.screens.pager.track.adapter.TrackItemViewModel;
+import com.chiriacd.lastfmexampleapp.utils.NavigationUtils;
 import com.chiriacd.lastfmexampleapp.utils.qualifier.TrackVM;
 
 import java.util.List;
@@ -28,7 +29,6 @@ public class TrackFragment extends BaseFragment<TrackFragmentBinding, TrackFragm
     @Inject @TrackVM ViewModelProvider.Factory vmFactory;
     @Inject TrackAdapter trackAdapter;
 
-    private String LOG_TAG = "TrackFragment";
 
     @Override
     public int getBindingVariable() {
@@ -66,17 +66,7 @@ public class TrackFragment extends BaseFragment<TrackFragmentBinding, TrackFragm
     }
 
     private void onTrackClicked(String url) {
-        if (url != null) {
-            try {
-                Intent intent = new Intent();
-                intent.setAction(Intent.ACTION_VIEW);
-                intent.addCategory(Intent.CATEGORY_BROWSABLE);
-                intent.setData(Uri.parse(url));
-                getContext().startActivity(intent);
-            } catch (Exception e) {
-                Log.d(LOG_TAG, "Bad url: " + url);
-            }
-        }
+        NavigationUtils.openWebBrowser(getContext(), url);
     }
 
     private void onTracksChanged(List<TrackItemViewModel> tracks) {

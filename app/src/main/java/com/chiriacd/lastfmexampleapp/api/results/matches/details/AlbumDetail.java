@@ -4,10 +4,12 @@ public class AlbumDetail {
 
     String name;
     String artist;
+    String url;
 
-    public AlbumDetail(String name, String artist) {
+    public AlbumDetail(String name, String artist, String url) {
         this.name = name;
         this.artist = artist;
+        this.url = url;
     }
 
     public String getArtist() {
@@ -16,5 +18,9 @@ public class AlbumDetail {
 
     public String getName() {
         return name;
+    }
+
+    public String getUrl() {
+        return url;
     }
 }

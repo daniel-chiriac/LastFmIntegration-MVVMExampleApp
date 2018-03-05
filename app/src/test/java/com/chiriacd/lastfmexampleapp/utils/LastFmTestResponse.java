@@ -9,13 +9,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.Observable;
+import io.reactivex.functions.Function;
 
 public class LastFmTestResponse {
 
     public static AlbumResult provideTestAlbumResut(int numberOfResults) {
         ArrayList<AlbumDetail> albums = new ArrayList<>();
         for (int i=0; i<numberOfResults; i++) {
-            albums.add(new AlbumDetail("test", "test"));
+            albums.add(new AlbumDetail("test", "test", "test"));
         }
         AlbumMatches albumMatches = new AlbumMatches(albums);
         AlbumResult.Result result = new AlbumResult.Result(albumMatches);
@@ -25,7 +26,9 @@ public class LastFmTestResponse {
     public static List<AlbumItemViewModel> albumItemViewModelFrom(AlbumResult albumResult) {
         List<AlbumDetail> albums = albumResult.getResult().getAlbumMatches().getAlbums();
         return Observable.fromIterable(albums)
-                .map(AlbumItemViewModel::new).toList().blockingGet();
+                .map(albumDetail -> new AlbumItemViewModel(albumDetail, null))
+                .toList()
+                .blockingGet();
 
     }
 }

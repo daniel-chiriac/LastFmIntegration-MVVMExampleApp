@@ -14,6 +14,7 @@ import com.chiriacd.lastfmexampleapp.databinding.ArtistFragmentBinding;
 import com.chiriacd.lastfmexampleapp.screens.pager.artist.adapter.ArtistItemViewModel;
 import com.chiriacd.lastfmexampleapp.screens.pager.artist.adapter.ArtistsAdapter;
 import com.chiriacd.lastfmexampleapp.screens.pager.base.BaseFragment;
+import com.chiriacd.lastfmexampleapp.utils.NavigationUtils;
 import com.chiriacd.lastfmexampleapp.utils.qualifier.ArtistVM;
 
 import java.util.List;
@@ -54,8 +55,12 @@ public class ArtistFragment extends BaseFragment<ArtistFragmentBinding, ArtistFr
     }
 
     private void subscribeToLiveData() {
-        getViewModel().getArtistsLiveData()
-                .observe(this, this::onArtistsChanged);
+        getViewModel().getArtistsLiveData().observe(this, this::onArtistsChanged);
+        getViewModel().getClickedUrl().observe(this, this::onArtistItemClick);
+    }
+
+    private void onArtistItemClick(String url) {
+        NavigationUtils.openWebBrowser(getContext(), url);
     }
 
     private void onArtistsChanged(List<ArtistItemViewModel> artists) {
