@@ -2,17 +2,21 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
+
+        <import type="android.view.View" />
+
         <variable
             name="itemViewModel"
-            type="com.chiriacd.lastfmexampleapp.screens.pager.track.adapter.TrackItemViewModel"/>
+            type="com.chiriacd.lastfmexampleapp.screens.pager.track.adapter.TrackItemViewModel" />
 
     </data>
 
     <TextView
-        android:background="@android:color/holo_blue_light"
-        android:layout_margin="10dp"
-        android:text="@{itemViewModel.name}"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@android:color/holo_blue_light"
+        android:onClick="@{() -> itemViewModel.itemClicked()}"
+        android:text="@{itemViewModel.name}" />
 
 </layout>

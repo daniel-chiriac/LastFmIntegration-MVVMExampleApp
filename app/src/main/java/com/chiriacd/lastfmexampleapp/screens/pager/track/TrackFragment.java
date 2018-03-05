@@ -2,10 +2,13 @@ package com.chiriacd.lastfmexampleapp.screens.pager.track;
 
 import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
+import android.util.Log;
 import android.view.View;
 
 import com.chiriacd.lastfmexampleapp.BR;
@@ -24,6 +27,8 @@ import javax.inject.Inject;
 public class TrackFragment extends BaseFragment<TrackFragmentBinding, TrackFragmentViewModel> {
     @Inject @TrackVM ViewModelProvider.Factory vmFactory;
     @Inject TrackAdapter trackAdapter;
+
+    private String LOG_TAG = "TrackFragment";
 
     @Override
     public int getBindingVariable() {
@@ -54,8 +59,24 @@ public class TrackFragment extends BaseFragment<TrackFragmentBinding, TrackFragm
     }
 
     private void subscribeToLiveData() {
-        getViewModel().getTracksLiveData()
-                .observe(this, this::onTracksChanged);
+        TrackFragmentViewModel viewModel = getViewModel();
+        viewModel.getTracksLiveData().observe(this, this::onTracksChanged);
+        viewModel.getClickedUrl().observe(this, this::onTrackClicked);
+
+    }
+
+    private void onTrackClicked(String url) {
+        if (url != null) {
+            try {
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_VIEW);
+                intent.addCategory(Intent.CATEGORY_BROWSABLE);
+                intent.setData(Uri.parse(url));
+                getContext().startActivity(intent);
+            } catch (Exception e) {
+                Log.d(LOG_TAG, "Bad url: " + url);
+            }
+        }
     }
 
     private void onTracksChanged(List<TrackItemViewModel> tracks) {
